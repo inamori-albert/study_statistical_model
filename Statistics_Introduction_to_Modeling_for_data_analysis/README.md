@@ -1,3 +1,4 @@
-# ƒf[ƒ^‰ğÍ‚Ì‚½‚ß‚Ì“Œvƒ‚ƒfƒŠƒ“ƒO“ü–å‚Ì‰‰K
-QlFhttp://hosho.ees.hokudai.ac.jp/~kubo/ce/EesLecture2008.html
-ƒTƒ|[ƒgƒy[ƒW:http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html
+# ãƒ‡ãƒ¼ã‚¿è§£æã®ãŸã‚ã®çµ±è¨ˆãƒ¢ãƒ‡ãƒªãƒ³ã‚°å…¥é–€ã®æ¼”ç¿’
+å‚è€ƒï¼šhttp://hosho.ees.hokudai.ac.jp/~kubo/ce/EesLecture2008.html
+
+ã‚µãƒãƒ¼ãƒˆãƒšãƒ¼ã‚¸:http://hosho.ees.hokudai.ac.jp/~kubo/ce/IwanamiBook.html
