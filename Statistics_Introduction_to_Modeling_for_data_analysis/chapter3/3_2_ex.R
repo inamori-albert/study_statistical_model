@@ -11,3 +11,10 @@ print(class(d$x))
 print(class(d$f))
 
 summary(d)
+
+par(mfrow=c(2,1))
+
+plot(d$x, d$y, pch = c(21,19)[d$f])
+legend("topleft", legend = c("C", "T"), pch = c(21,19))
+
+plot(d$f, d$y)
