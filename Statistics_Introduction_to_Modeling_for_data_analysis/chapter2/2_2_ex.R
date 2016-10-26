@@ -1,3 +1,6 @@
+setwd("./Statistics_Introduction_to_Modeling_for_data_analysis/chapter2/")
+load("./data.RData")
+
 y <- 0:9
 prob <- dpois(y, lambda = 3.56)
 cbind(y, prob)
