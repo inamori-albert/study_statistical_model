@@ -1,1 +1,1 @@
-# 時系列解析のサンプル
+# 時系列解析のサンプル time siries analysis
