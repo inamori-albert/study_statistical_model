@@ -12,8 +12,10 @@ plot(Canada.var)
 Canada.predict <- predict(Canada.var,n.ahead = 20,ci = 0.95)
 plot(Canada.predict)
 
+# 単位根か確認
 adf.test(Canada[,1])
 adf.test(Canada[,2])
 adf.test(Canada[,3])
 adf.test(Canada[,4])
+# すべて単位根だった。。。
 
