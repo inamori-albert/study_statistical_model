@@ -33,3 +33,6 @@ stepAIC(fit.x)
 stepAIC(fit.xf)
 # fit.xfが一番AICが低くなるのでよい
 
+# 交互作用項の含んだモデル
+fit.x_f <- glm(cbind(y, N-y) ~ x * f, data = d, family = binomial(link = "logit"))
+stepAIC(fit.x_f)
