@@ -65,6 +65,16 @@ with(iris, plot(Petal.Length, Species, col=rainbow(7)[Species]))
 
 with(iris, plot(Petal.Length, Sepal.Length, col=rainbow(7)[Species]))
 
+# 主成分分析
+my_prc <- prcomp(my_iris,scale=T)
+summary(my_prc)
+print(round(my_prc$rotation,digits = 3))
+fc.l <- sweep(my_prc$rotation, MARGIN=2, my_prc$sdev, FUN="*")
+subject <- c("l","w","L","W","S")
+plot(fc.l[,1], pch=subject, ylim=range(fc.l), main="PC1")
+plot(fc.l[,2], pch=subject, ylim=range(fc.l), main="PC2")
+plot(fc.l[,1], fc.l[,2], pch=subject,xlim=c(-1,1), ylim=c(-1,1))
+
 # 時系列データ
 ts.plot(ldeaths,mdeaths,fdeaths,col=c(1,2,3))
 # 単位根検定→両方とも単位根なので、一回微分しないと見せかけの回帰が生じる
@@ -92,3 +102,4 @@ library(vars)
 my_var = VAR(Canada,p=VARselect(Canada)$selection[1])
 summary(my_var)
 plot(forecast(my_var, h = 10))
+biplot(my_prc)
