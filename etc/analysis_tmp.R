@@ -85,6 +85,9 @@ adf.test(Canada[,2])
 adf.test(Canada[,3])
 adf.test(Canada[,4])
 
+# 季節成分分解
+plot(stl(ldeaths, s.window = "periodic"))
+
 library(vars)
 my_var = VAR(Canada,p=VARselect(Canada)$selection[1])
 summary(my_var)
