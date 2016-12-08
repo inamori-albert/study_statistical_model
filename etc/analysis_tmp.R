@@ -1,5 +1,6 @@
 str(iris)
 
+
 # 相関をプロット
 plot(iris$Sepal.Length, iris$Sepal.Width)
 pairs(iris[1:5])
@@ -42,15 +43,16 @@ my_tree <- tree(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Specie
 plot(my_tree)
 text(my_tree)
 
-# 木で回帰
-plot(my_iris$Sepal.Length,my_iris$Sepal.Width)
-partition.tree(my_tree,add=T,col=2)
+iris.label<-c("S","C","V")[my_iris[,5]]
+my_tree <- tree(Species~., data = my_iris)
+plot(my_iris[,3],my_iris[,4],type="n")
+text(iris[,3],iris[,4],labels = iris.label)
+partition.tree(my_tree,add=T,col=2,cex=1.5)
 
 # 木の剪定
 my_tree2 <- prune.tree(my_tree,best=10)
 plot(my_tree2)
 text(my_tree2)
-
 
 my_tree <- tree(Sepal.Length ~ Sepal.Width + Species, data = my_iris)
 plot(my_tree)
@@ -62,7 +64,6 @@ pareto.chart(z)
 
 # 種別で色分け
 with(iris, plot(Petal.Length, Species, col=rainbow(7)[Species]))
-
 with(iris, plot(Petal.Length, Sepal.Length, col=rainbow(7)[Species]))
 
 # 主成分分析
@@ -74,6 +75,62 @@ subject <- c("l","w","L","W","S")
 plot(fc.l[,1], pch=subject, ylim=range(fc.l), main="PC1")
 plot(fc.l[,2], pch=subject, ylim=range(fc.l), main="PC2")
 plot(fc.l[,1], fc.l[,2], pch=subject,xlim=c(-1,1), ylim=c(-1,1))
+biplot(my_prc)
+
+# 帯グラフ(積み上げ)
+for(i in 1:nrow(iris)){
+  iris$rand[i] = c("hoge","hogehoge")[sample(1:2, 1, replace=TRUE)]
+  print(iris[i,])
+}
+g <- ggplot(
+  iris,
+  aes (
+    x = rand,             # 遺伝子別でグルーピング
+    y = Sepal.Length,
+    fill = Species       # 縦軸を生物種で fill up 
+  )
+)
+g <- g + geom_bar(stat = "identity")
+plot(g)
+
+# 帯グラフ(割合)
+g <- ggplot(
+  iris,
+  aes (
+    x = rand,             # 遺伝子別でグルーピング
+    y = Sepal.Length,
+    fill = Species       # 縦軸を生物種で fill up 
+  )
+)
+g <- g + geom_bar(stat = "identity", position = "fill")
+plot(g)
+
+# クロス集計表
+table(iris$rand, iris$Sepal.Length)
+table(iris$rand, iris$Species)
+addmargins(table(iris$rand, iris$Species)) # 合計も付けてみた
+addmargins(table(iris$rand, iris$Species), FUN = ) # 合計も付けてみた
+
+# ヒートマップ(並び変えあり)
+heatmap(table(iris$rand, iris$Species))
+heatmap(
+  table(iris$Sepal.Width, iris$Sepal.Length),
+  main = "Sepal.width Vs Sepal.Length",
+  Rowv = T,
+  Colv = T,
+  distfun = dist,
+  hclustfun = hclust,
+  color = heat.colors(256)
+)
+
+# ヒートマップ(並び変えなし)
+heatmap(
+  table(iris$Sepal.Width, iris$Sepal.Length),
+  main = "Sepal.width Vs Sepal.Length",
+  Rowv = NA,
+  Colv = NA,
+  color = heat.colors(256)
+)
 
 # 時系列データ
 ts.plot(ldeaths,mdeaths,fdeaths,col=c(1,2,3))
