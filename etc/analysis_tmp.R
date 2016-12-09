@@ -20,6 +20,9 @@ pairs(iris[1:5])
 plot(iris[,3],iris[,4])
 
 # 相関係数を計算
+# "pearson" ： ピアソンの積率相関係数の無相関検定を行う．
+# "kendall" ： ケンドールの順位相関係数の無相関検定を行う．
+# "spearman" ： スピアマンの順位相関係数の無相関検定を行う
 cor(iris[1:4], method = "p")
 str(iris)
 
